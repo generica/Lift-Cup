@@ -22,11 +22,12 @@ import sys
 import os.path
 import getopt
 
-from quality import Quality
-
 from lift_cup import LC_VERSION, LiftCup
 
 def usage():
+    """
+    Print usage
+    """
     print "Lift Cup "+str(LC_VERSION)
     print "Usage:", sys.argv[0], "<file path> [quality]"
     print "Options:"
