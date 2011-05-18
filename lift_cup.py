@@ -85,6 +85,9 @@ class LiftCup(object):
 
 
     def logger(self, *args, **kwargs):
+        """
+        Log messages to screen or file
+        """
         message = str(datetime.datetime.today()) + ' ' + ' '.join([str(x) for x in args])
         if ('debug' not in kwargs or not kwargs['debug']):
             print message
@@ -253,16 +256,19 @@ class LiftCup(object):
         
         nfo_path: Full path of the file we should create
         old_name: The original name of this release before we scenified it
-            """
+        """
         self.logger("Creating NFO at", nfo_path)
         nfo = open(nfo_path, 'a')
         nfo.write('Original name: '+old_name+'\n')
         if nfo_string:
             nfo.write(nfo_string+'\n')
         nfo.write('Lift Cup '+str(LC_VERSION)+'\n')
-        nfo.close
+        nfo.close()
     
     def lift_cup(self):
+        """
+        Upload a file to usenet
+        """
         cur_file = os.path.join(self.tv_dir, self.file)
         scene_file_name = self.make_scene_name(self.file)
         scene_file_path = os.path.join(TEMP_DIR, scene_file_name)
